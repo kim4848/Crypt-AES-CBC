@@ -69,7 +69,8 @@ namespace LetMeCrypterU
 
             if (key.Length < 32)
             {                
-                var paddedkey = new byte[32];
+                int i=0;
+                  var paddedkey = new byte[32];
                 System.Buffer.BlockCopy(key, 0, paddedkey, 0, key.Length);
                 key = paddedkey;
             }
