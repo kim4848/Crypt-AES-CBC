@@ -24,28 +24,17 @@ namespace LetMeCrypterU
             }
             catch(Exception ex)
             {
-
                 MessageBox.Show(ex.Message.ToString());
-
-
             }
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void button2_Click(object sender, EventArgs e)
-        {
-
-          
+        {          
             txtOutput.Text= cp.Decrypt(txtInput.Text);
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {
-           
+        {           
             txtOutput.Text = cp.Encrypt(txtInput.Text);
         }
 
@@ -62,18 +51,9 @@ namespace LetMeCrypterU
                 }
                 catch (Exception ex)
                 {
-
                     MessageBox.Show(ex.Message.ToString());
-
-
                 }
-            }
-            
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            
-        }
+            }            
+        }      
     }
 }
