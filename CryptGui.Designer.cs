@@ -1,6 +1,6 @@
 ﻿namespace LetMeCrypterU
 {
-    partial class Form1
+    partial class CryptGui
     {
         /// <summary>
         /// Required designer variable.
@@ -49,7 +49,7 @@
             this.txtInput.Name = "txtInput";
             this.txtInput.Size = new System.Drawing.Size(455, 162);
             this.txtInput.TabIndex = 0;
-            this.txtInput.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+           
             // 
             // txtOutput
             // 

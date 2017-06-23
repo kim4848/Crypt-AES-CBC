@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace LetMeCrypterU
 {
-    public partial class Form1 : Form
+    public partial class CryptGui : Form
     {
         private crypt cp { get; set; }
 
-        public Form1()
+        public CryptGui()
         {
             InitializeComponent();
 
