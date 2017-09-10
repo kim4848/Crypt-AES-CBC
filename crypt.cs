@@ -39,7 +39,7 @@ namespace LetMeCrypterU
                 key = paddedkey;
             }
 
-            using (var rijndaelManaged = new RijndaelManaged { Padding = PaddingMode.None, Key = key, IV = iv, Mode = CipherMode.CBC })
+            using (var rijndaelManaged = new RijndaelManaged { Padding = PaddingMode.Zeros, Key = key, IV = iv, Mode = CipherMode.CBC })
             {
                 rijndaelManaged.BlockSize = 128;
                 rijndaelManaged.KeySize = 256;
@@ -58,9 +58,10 @@ namespace LetMeCrypterU
             var sToEncrypt = prm_text_to_encrypt;
 
             var myRijndael = new RijndaelManaged()
-            {          
+            {
                 Mode = CipherMode.CBC,
-                KeySize = 256
+                KeySize = 256,
+                Padding = PaddingMode.Zeros
             };
 
             myRijndael.GenerateIV();
@@ -68,13 +69,13 @@ namespace LetMeCrypterU
             byte[] key = Convert.FromBase64String(keyString);
 
             if (key.Length < 32)
-            {                
-               int i=0;
+            {
+                int i = 0;
                 var paddedkey = new byte[32];
                 System.Buffer.BlockCopy(key, 0, paddedkey, 0, key.Length);
                 key = paddedkey;
             }
-            
+
             var encryptor = myRijndael.CreateEncryptor(key, myRijndael.IV);
 
             var msEncrypt = new MemoryStream();
@@ -91,11 +92,38 @@ namespace LetMeCrypterU
             return (Convert.ToBase64String(Encoding.Default.GetBytes(encryptedAndCBC)));
         }
 
-        void cryptFile()
+        public void decryptFile(string inputPath)
         {
-           
+            FileInfo fi = new FileInfo(inputPath);
 
+            if (fi.Extension.Equals(".LMC"))
+            {
+                string newfileName = fi.FullName.Replace(".LMC", "");
+                string read = File.ReadAllText(inputPath);
+                var result = Decrypt(read);
+                result = result.TrimEnd('\0');
+                var base64EncodedBytes = System.Convert.FromBase64String(result.Trim());
+
+                using (var fs = new FileStream(newfileName, FileMode.Create, FileAccess.Write))
+                {
+                    fs.Write(base64EncodedBytes, 0, base64EncodedBytes.Length);
+                }
+            }
+            else
+            {
+                throw new Exception("Ikke korrekt fil format");
+            }
         }
+
+        public void cryptFile(string inputFilePath)
+        {
+            FileInfo fi = new FileInfo(inputFilePath);
+            Byte[] bytes = File.ReadAllBytes(inputFilePath);            
+            String file = Convert.ToBase64String(bytes);
+            var result = Encrypt(file);
+            System.IO.File.WriteAllText(inputFilePath + ".LMC", result);
+        }
+
         private static void readKey(string stiTilNøgle)
         {
             try

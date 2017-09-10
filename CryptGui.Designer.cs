@@ -31,6 +31,8 @@
             this.txtInput = new System.Windows.Forms.TextBox();
             this.txtOutput = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -49,7 +51,6 @@
             this.txtInput.Name = "txtInput";
             this.txtInput.Size = new System.Drawing.Size(455, 162);
             this.txtInput.TabIndex = 0;
-           
             // 
             // txtOutput
             // 
@@ -63,6 +64,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Controls.Add(this.button5);
+            this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
@@ -71,6 +74,26 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(131, 396);
             this.panel1.TabIndex = 2;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(13, 236);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.TabIndex = 4;
+            this.button5.Text = "Decrypt";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(13, 206);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 3;
+            this.button4.Text = "Encrypt";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button3
             // 
@@ -139,7 +162,7 @@
             this.lblSti.TabIndex = 0;
             this.lblSti.Text = "c:\\key\\";
             // 
-            // Form1
+            // CryptGui
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -148,7 +171,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.txtOutput);
             this.Controls.Add(this.txtInput);
-            this.Name = "Form1";
+            this.Name = "CryptGui";
             this.Text = "Crypter";
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
@@ -170,6 +193,8 @@
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.Label lblSti;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
     }
 }
 

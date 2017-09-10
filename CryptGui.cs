@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -54,6 +55,36 @@ namespace LetMeCrypterU
                     MessageBox.Show(ex.Message.ToString());
                 }
             }            
-        }      
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            crypt cp = new crypt(@"c:\key\");
+
+            OpenFileDialog of = new OpenFileDialog();
+
+            DialogResult dr = of.ShowDialog();
+            if (dr == DialogResult.OK)
+            {
+
+       
+                cp.cryptFile(of.FileName);
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            crypt cp = new crypt(@"c:\key\");
+
+            OpenFileDialog of = new OpenFileDialog();
+            DialogResult dr = of.ShowDialog();
+            if (dr == DialogResult.OK)
+            {
+
+                
+                cp.decryptFile(of.FileName);
+            }
+
+        }
     }
 }
